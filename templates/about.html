@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}About - Task Manager{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="about-section">
+        <div class="about-header">
+            <h1 class="page-title">
+                <i class="fas fa-info-circle"></i> About TaskMaster Pro
+            </h1>
+        </div>
+
+        <div class="about-content">
+            <div class="about-card">
+                <div class="about-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h2>What is TaskMaster Pro?</h2>
+                <p>
+                    TaskMaster Pro is a modern, intuitive task management web application built with Flask. 
+                    It helps you organize your daily tasks, set priorities, and track your progress efficiently.
+                </p>
+            </div>
+
+            <div class="about-card">
+                <div class="about-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h2>Features</h2>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Create and manage tasks easily</li>
+                    <li><i class="fas fa-check"></i> Set task priorities (Low, Medium, High)</li>
+                    <li><i class="fas fa-check"></i> Mark tasks as completed</li>
+                    <li><i class="fas fa-check"></i> Track statistics (Total, Completed, Pending)</li>
+                    <li><i class="fas fa-check"></i> Clean and modern user interface</li>
+                    <li><i class="fas fa-check"></i> Responsive design for all devices</li>
+                </ul>
+            </div>
+
+            <div class="about-card">
+                <div class="about-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h2>Technologies Used</h2>
+                <div class="tech-stack">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Flask</span>
+                    <span class="tech-badge">HTML5</span>
+                    <span class="tech-badge">CSS3</span>
+                    <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge">JSON</span>
+                </div>
+            </div>
+
+            <div class="about-card">
+                <div class="about-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h2>Project Information</h2>
+                <p>
+                    This project was created as a demonstration of Flask web application development 
+                    and deployment using GitHub. It showcases fundamental web development concepts 
+                    including routing, templates, forms, and data persistence.
+                </p>
+                <p class="mt-2">
+                    <strong>Version:</strong> 1.0.0<br>
+                    <strong>Created:</strong> January 2026<br>
+                    <strong>Framework:</strong> Flask (Python)
+                </p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Get Started!</h2>
+                <p>Ready to organize your tasks?</p>
+                <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-arrow-left"></i> Go to Tasks
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
