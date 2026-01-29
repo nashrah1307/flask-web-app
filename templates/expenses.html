@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block title %}Expense Tracker - TaskMaster Pro{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="header-section">
+        <h1 class="page-title">
+            <i class="fas fa-wallet"></i> Expense Tracker
+        </h1>
+        <p class="subtitle">Track your spending and manage your budget</p>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="stats-grid">
+        <div class="stat-card stat-total">
+            <div class="stat-icon">
+                <i class="fas fa-receipt"></i>
+            </div>
+            <div class="stat-content">
+                <h3>{{ count }}</h3>
+                <p>Total Expenses</p>
+            </div>
+        </div>
+        <div class="stat-card stat-money">
+            <div class="stat-icon">
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="stat-content">
+                <h3>${{ "%.2f"|format(total_expenses) }}</h3>
+                <p>Total Spent</p>
+            </div>
+        </div>
+        <div class="stat-card stat-category">
+            <div class="stat-icon">
+                <i class="fas fa-chart-pie"></i>
+            </div>
+            <div class="stat-content">
+                <h3>{{ category_expenses|length }}</h3>
+                <p>Categories</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Breakdown -->
+    {% if category_expenses %}
+    <div class="category-breakdown">
+        <h3><i class="fas fa-chart-bar"></i> Spending by Category</h3>
+        <div class="category-grid">
+            {% for category, amount in category_expenses.items() %}
+            <div class="category-item">
+                <span class="category-name">{{ category }}</span>
+                <span class="category-amount">${{ "%.2f"|format(amount) }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Add Expense Form -->
+    <div class="add-task-section">
+        <button class="btn btn-primary" onclick="toggleExpenseForm()">
+            <i class="fas fa-plus"></i> Add New Expense
+        </button>
+        
+        <div id="expenseForm" class="task-form" style="display: none;">
+            <form method="POST" action="{{ url_for('add_expense') }}">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="title">
+                            <i class="fas fa-heading"></i> Expense Title
+                        </label>
+                        <input type="text" id="title" name="title" required placeholder="e.g., Grocery Shopping">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="amount">
+                            <i class="fas fa-dollar-sign"></i> Amount
+                        </label>
+                        <input type="number" id="amount" name="amount" step="0.01" required placeholder="0.00">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">
+                            <i class="fas fa-tag"></i> Category
+                        </label>
+                        <select id="category" name="category" required>
+                            <option value="Food">🍔 Food & Dining</option>
+                            <option value="Transportation">🚗 Transportation</option>
+                            <option value="Shopping">🛍️ Shopping</option>
+                            <option value="Entertainment">🎮 Entertainment</option>
+                            <option value="Bills">💡 Bills & Utilities</option>
+                            <option value="Healthcare">🏥 Healthcare</option>
+                            <option value="Education">📚 Education</option>
+                            <option value="Other">📦 Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">
+                            <i class="fas fa-calendar"></i> Date
+                        </label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">
+                        <i class="fas fa-align-left"></i> Description (Optional)
+                    </label>
+                    <textarea id="description" name="description" rows="2" placeholder="Add notes about this expense..."></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save"></i> Save Expense
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="toggleExpenseForm()">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Expenses List -->
+    <div class="tasks-section">
+        <h2 class="section-title">
+            <i class="fas fa-list"></i> Recent Expenses
+        </h2>
+        
+        {% if expenses %}
+        <div class="expenses-list">
+            {% for expense in expenses|reverse %}
+            <div class="expense-card category-{{ expense.category|lower }}">
+                <div class="expense-header">
+                    <div class="expense-info">
+                        <h3 class="expense-title">{{ expense.title }}</h3>
+                        {% if expense.description %}
+                        <p class="expense-description">{{ expense.description }}</p>
+                        {% endif %}
+                        <div class="expense-meta">
+                            <span class="expense-date">
+                                <i class="fas fa-calendar"></i> {{ expense.date }}
+                            </span>
+                            <span class="expense-category">
+                                <i class="fas fa-tag"></i> {{ expense.category }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="expense-amount">
+                        <span class="amount">${{ "%.2f"|format(expense.amount|float) }}</span>
+                        <a href="{{ url_for('delete_expense', expense_id=expense.id) }}" 
+                           class="btn-icon btn-delete" 
+                           onclick="return confirm('Are you sure you want to delete this expense?')">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <i class="fas fa-wallet"></i>
+            <h3>No expenses recorded yet!</h3>
+            <p>Start tracking your spending by adding your first expense above.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+function toggleExpenseForm() {
+    const form = document.getElementById('expenseForm');
+    if (form.style.display === 'none' || form.style.display === '') {
+        form.style.display = 'block';
+        document.getElementById('title').focus();
+        // Set today's date as default
+        document.getElementById('date').valueAsDate = new Date();
+    } else {
+        form.style.display = 'none';
+    }
+}
+</script>
+{% endblock %}

@@ -567,6 +567,374 @@ body {
     color: var(--primary-color);
 }
 
+/* ==================== EXPENSE TRACKER STYLES ==================== */
+
+.stat-money .stat-icon {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+}
+
+.stat-category .stat-icon {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+}
+
+.category-breakdown {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 30px;
+}
+
+.category-breakdown h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.category-item {
+    background: var(--light-bg);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid var(--primary-color);
+}
+
+.category-name {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.category-amount {
+    color: var(--success-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.expenses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.expense-card {
+    background: white;
+    border-left: 4px solid var(--primary-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s;
+}
+
+.expense-card:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.expense-card.category-food {
+    border-left-color: #ef4444;
+}
+
+.expense-card.category-transportation {
+    border-left-color: #3b82f6;
+}
+
+.expense-card.category-shopping {
+    border-left-color: #ec4899;
+}
+
+.expense-card.category-entertainment {
+    border-left-color: #8b5cf6;
+}
+
+.expense-card.category-bills {
+    border-left-color: #f59e0b;
+}
+
+.expense-card.category-healthcare {
+    border-left-color: #10b981;
+}
+
+.expense-card.category-education {
+    border-left-color: #6366f1;
+}
+
+.expense-card.category-other {
+    border-left-color: #64748b;
+}
+
+.expense-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.expense-info {
+    flex: 1;
+}
+
+.expense-title {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+.expense-description {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.expense-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.expense-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.expense-amount {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.expense-amount .amount {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--success-color);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* ==================== NOTES MANAGER STYLES ==================== */
+
+.stat-notes .stat-icon {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.note-card {
+    background: #fef3c7;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.note-card.note-yellow {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+}
+
+.note-card.note-blue {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+.note-card.note-green {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+}
+
+.note-card.note-pink {
+    background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+}
+
+.note-card.note-purple {
+    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.note-title {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    flex: 1;
+    word-break: break-word;
+}
+
+.note-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.note-content {
+    flex: 1;
+    color: var(--text-dark);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.note-footer {
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.note-footer small {
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+.color-picker {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.color-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.color-option:hover {
+    background: var(--light-bg);
+}
+
+.color-option input[type="radio"] {
+    margin: 0;
+}
+
+.color-swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    display: inline-block;
+}
+
+.color-yellow {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+}
+
+.color-blue {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+.color-green {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+}
+
+.color-pink {
+    background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+}
+
+.color-purple {
+    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+}
+
+.btn-edit {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 0;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    padding: 20px 30px;
+    border-bottom: 2px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--danger-color);
+}
+
+.modal-content form {
+    padding: 30px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .page-title {
@@ -588,6 +956,12 @@ body {
     
     .nav-links {
         gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 6px 12px;
     }
     
     .form-actions {
@@ -597,5 +971,37 @@ body {
     .btn {
         width: 100%;
         justify-content: center;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .expense-header {
+        flex-direction: column;
+    }
+    
+    .expense-amount {
+        width: 100%;
+        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .notes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .color-picker {
+        flex-direction: column;
+    }
+    
+    .modal-content {
+        width: 95%;
+        max-height: 95vh;
     }
 }

@@ -1,27 +1,50 @@
-# TaskMaster Pro - Flask Web Application
+# TaskMaster Pro - Complete Productivity Suite
 
-A modern, intuitive task management web application built with Flask. Organize your daily tasks, set priorities, and track your progress efficiently.
+A comprehensive productivity web application built with Flask featuring **Task Management**, **Expense Tracking**, and **Note Taking** all in one place.
 
 ![TaskMaster Pro](https://img.shields.io/badge/Flask-3.0.0-blue)
 ![Python](https://img.shields.io/badge/Python-3.8+-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
+![Version](https://img.shields.io/badge/Version-2.0-purple)
 
 ## 🌟 Features
 
-- ✅ Create and manage tasks easily
+### 📋 Task Manager
+- ✅ Create and manage tasks with titles and descriptions
 - 🎯 Set task priorities (Low, Medium, High)
 - ✔️ Mark tasks as completed
 - 📊 Track statistics (Total, Completed, Pending)
-- 🎨 Clean and modern user interface
-- 📱 Responsive design for all devices
+- 🗑️ Delete tasks when done
+
+### 💰 Expense Tracker
+- 💵 Track all your expenses
+- 🏷️ Categorize expenses (Food, Transportation, Shopping, Entertainment, Bills, Healthcare, Education, Other)
+- 📊 View spending statistics and category breakdown
+- 📅 Date-based expense tracking
+- 💳 See total spending at a glance
+
+### 📝 Notes Manager
+- 📒 Create colorful sticky notes
+- 🎨 Choose from 5 color themes (Yellow, Blue, Green, Pink, Purple)
+- ✏️ Edit notes anytime
+- 🗂️ Organize your thoughts and ideas
+- 🕐 Track creation and update times
+
+### 🎨 General Features
+- 📱 Fully responsive design for all devices
+- 🚀 Fast and lightweight
 - 💾 JSON-based data persistence
+- 🔌 RESTful API endpoints for all modules
+- 🎭 Modern, intuitive user interface
+- ⚡ Smooth animations and transitions
 
 ## 🛠️ Technologies Used
 
-- **Backend**: Python, Flask
+- **Backend**: Python 3.11, Flask 3.0.0
 - **Frontend**: HTML5, CSS3, JavaScript
 - **Data Storage**: JSON
-- **Icons**: Font Awesome
+- **Icons**: Font Awesome 6.4.0
+- **Server**: Gunicorn (for production)
 - **Deployment**: Render/Vercel/Railway
 
 ## 📋 Prerequisites
@@ -87,7 +110,7 @@ The application will be available at `http://localhost:5000`
    - Click "New +" → "Web Service"
    - Connect your GitHub repository
    - Configure:
-     - **Name**: `taskmaster-pro` (or your choice)
+     - **Name**: `taskmaster-pro`
      - **Environment**: `Python 3`
      - **Build Command**: `pip install -r requirements.txt`
      - **Start Command**: `gunicorn app:app`
@@ -95,130 +118,107 @@ The application will be available at `http://localhost:5000`
 
 4. **Deploy**
    - Click "Create Web Service"
-   - Wait for deployment (2-3 minutes)
+   - Wait 2-3 minutes
    - Your app will be live at: `https://taskmaster-pro.onrender.com`
 
-### Option 2: Deploy on Vercel (FREE)
-
-1. **Install Vercel CLI**
-   ```bash
-   npm install -g vercel
-   ```
-
-2. **Create vercel.json**
-   ```json
-   {
-     "version": 2,
-     "builds": [
-       {
-         "src": "app.py",
-         "use": "@vercel/python"
-       }
-     ],
-     "routes": [
-       {
-         "src": "/(.*)",
-         "dest": "app.py"
-       }
-     ]
-   }
-   ```
-
-3. **Deploy**
-   ```bash
-   vercel
-   ```
-
-### Option 3: Deploy on Railway (FREE)
-
-1. **Create Railway Account**
-   - Go to [railway.app](https://railway.app)
-   - Sign up with GitHub
-
-2. **Deploy from GitHub**
-   - Click "New Project"
-   - Select "Deploy from GitHub repo"
-   - Choose your repository
-   - Railway will auto-detect Flask and deploy
-
-3. **Generate Domain**
-   - Go to Settings → Generate Domain
-   - Your app will be live!
-
-### Option 4: Deploy on PythonAnywhere (FREE)
-
-1. **Create Account** at [pythonanywhere.com](https://www.pythonanywhere.com)
-
-2. **Upload Code**
-   - Use Git or upload files directly
-
-3. **Configure Web App**
-   - Go to Web tab → Add a new web app
-   - Choose Flask
-   - Configure WSGI file
+See `DEPLOYMENT_GUIDE.md` for detailed deployment instructions.
 
 ## 📁 Project Structure
 
 ```
 flask-web-app/
 │
-├── app.py                 # Main Flask application
-├── requirements.txt       # Python dependencies
-├── Procfile              # Deployment configuration
-├── .gitignore            # Git ignore rules
-├── README.md             # Project documentation
+├── app.py                    # Main Flask application
+├── requirements.txt          # Python dependencies
+├── Procfile                 # Deployment configuration
+├── runtime.txt              # Python version
+├── .gitignore               # Git ignore rules
 │
-├── templates/            # HTML templates
-│   ├── base.html        # Base template
-│   ├── index.html       # Home page
-│   └── about.html       # About page
+├── templates/               # HTML templates
+│   ├── base.html           # Base template
+│   ├── index.html          # Task Manager page
+│   ├── expenses.html       # Expense Tracker page
+│   ├── notes.html          # Notes Manager page
+│   └── about.html          # About page
 │
-├── static/              # Static files
+├── static/                 # Static assets
 │   ├── css/
-│   │   └── style.css   # Styles
+│   │   └── style.css      # Main stylesheet
 │   └── js/
-│       └── script.js   # JavaScript
+│       └── script.js      # JavaScript
 │
-└── tasks.json          # Data storage (auto-created)
+├── tasks.json              # Task data (auto-created)
+├── expenses.json           # Expense data (auto-created)
+├── notes.json              # Notes data (auto-created)
+│
+└── README.md               # This file
 ```
 
-## 🎯 Usage
+## 🎯 Usage Guide
 
-1. **Add Task**: Click "Add New Task" button, fill in details, and save
-2. **Complete Task**: Click the circle icon next to a task to mark it complete
-3. **Delete Task**: Click the trash icon to remove a task
-4. **View Statistics**: Dashboard shows total, completed, and pending tasks
-5. **Priority Levels**: Assign Low, Medium, or High priority to tasks
+### Task Manager
+1. Navigate to **Tasks** page
+2. Click "Add New Task"
+3. Fill in title, description, and priority
+4. Click circle icon to mark complete
+5. Click trash icon to delete
 
-## 🔧 Configuration
+### Expense Tracker
+1. Navigate to **Expenses** page
+2. Click "Add New Expense"
+3. Enter title, amount, category, and date
+4. View statistics and category breakdown
+5. Delete expenses as needed
 
-### Environment Variables (Optional)
+### Notes Manager
+1. Navigate to **Notes** page
+2. Click "Add New Note"
+3. Enter title and content
+4. Choose a color theme
+5. Edit or delete notes using icons
 
-Create a `.env` file for production settings:
+## 🔌 API Endpoints
 
-```env
-FLASK_ENV=production
-SECRET_KEY=your-secret-key-here
+### Tasks API
+- `GET /api/tasks` - Get all tasks
+
+### Expenses API
+- `GET /api/expenses` - Get all expenses
+
+### Notes API
+- `GET /api/notes` - Get all notes
+
+Example usage:
+```bash
+curl https://your-app.onrender.com/api/tasks
 ```
 
-### Modify Port (if needed)
+## 🎨 Customization
 
-In `app.py`, change the port:
-
-```python
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8000)
+### Change Colors
+Edit `static/css/style.css`:
+```css
+:root {
+    --primary-color: #your-color;
+    --secondary-color: #your-color;
+}
 ```
+
+### Add New Categories (Expenses)
+Edit `templates/expenses.html` in the category select dropdown.
+
+### Add New Colors (Notes)
+Edit `templates/notes.html` and add color options in the color picker.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please follow these steps:
+Contributions are welcome! Please:
 
 1. Fork the repository
-2. Create a new branch (`git checkout -b feature/improvement`)
+2. Create a feature branch (`git checkout -b feature/improvement`)
 3. Make your changes
-4. Commit your changes (`git commit -am 'Add new feature'`)
-5. Push to the branch (`git push origin feature/improvement`)
+4. Commit (`git commit -am 'Add new feature'`)
+5. Push (`git push origin feature/improvement`)
 6. Create a Pull Request
 
 ## 📝 License
@@ -236,59 +236,65 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Flask Documentation
 - Font Awesome for icons
 - Render for free hosting
-- All contributors and testers
+- All contributors
 
 ## 📸 Screenshots
 
-### Home Page
-![Home Page](screenshots/home.png)
+### Task Manager
+Organize your daily tasks with priorities and completion tracking.
 
-### Task Management
-![Task Management](screenshots/tasks.png)
+### Expense Tracker
+Track spending across multiple categories with visual breakdowns.
 
-### About Page
-![About Page](screenshots/about.png)
+### Notes Manager
+Capture ideas with colorful, editable sticky notes.
 
 ## 🐛 Known Issues
 
-- Data persists in JSON file (consider database for production)
-- No user authentication (single-user application)
+- Data stored in JSON files (consider database for production)
+- Single-user application (no authentication)
+- Free hosting has cold starts (30-60 second wake-up)
 
 ## 🔮 Future Enhancements
 
 - [ ] User authentication and multi-user support
 - [ ] Database integration (PostgreSQL/MongoDB)
+- [ ] Export data to CSV/PDF
+- [ ] Charts and visualizations for expenses
 - [ ] Task categories and tags
 - [ ] Due dates and reminders
-- [ ] Export tasks to CSV/PDF
 - [ ] Dark mode toggle
 - [ ] Mobile app version
+- [ ] Email notifications
+- [ ] Recurring expenses
 
-## 💡 Tips for Students
+## 💡 For Students
 
-**For your teacher submission:**
+This is a complete project that demonstrates:
+- Full-stack web development
+- Database operations (CRUD)
+- RESTful API design
+- Responsive UI/UX design
+- Cloud deployment
+- Version control with Git
 
-1. Create a GitHub repository
-2. Push all code to GitHub
-3. Deploy on Render (easiest and free)
-4. Submit the live URL: `https://your-app-name.onrender.com`
-5. Also submit GitHub repository link
-
-**What to include in submission:**
-- Live deployment URL
-- GitHub repository link
-- Screenshots of the application
-- Brief description of features
+Perfect for:
+- Academic projects
+- Portfolio piece
+- Learning Flask framework
+- Understanding web development
 
 ## 📞 Support
 
-If you have any questions or need help with deployment, please:
+For issues or questions:
 - Open an issue on GitHub
-- Check the Flask documentation
-- Review Render's deployment guides
+- Check the documentation
+- Review Flask guides
 
 ---
 
-**Happy Coding! 🚀**
+**Built with ❤️ using Flask**
 
-Made with ❤️ using Flask
+TaskMaster Pro - Your All-in-One Productivity Suite
+
+Version 2.0 | January 2026
